@@ -13,25 +13,33 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Geometry + Material
+// Cube
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
-// 🔥 LIGHTS HERE
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-scene.add(ambientLight);
-
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(5, 5, 5);
-scene.add(directionalLight);
+// Lights
+scene.add(new THREE.AmbientLight(0xffffff, 1));
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(5, 5, 5);
+scene.add(light);
 
 camera.position.z = 5;
 
+// Mouse
+const mouse = new THREE.Vector2();
+
+window.addEventListener('mousemove', (event) => {
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  cube.position.x = mouse.x * 3;
+  cube.position.y = mouse.y * 2;
+  cube.position.z += 0.01
+});
+
 function animate() {
-  cube.rotation.y += 0.01;
-  cube.rotation.z += 0.01;
   renderer.render(scene, camera);
 }
 
