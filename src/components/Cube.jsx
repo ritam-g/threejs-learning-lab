@@ -1,6 +1,6 @@
 // useRef = object ka reference lene ke liye
 import { useRef } from 'react'
-
+import * as THREE from 'three'
 // useFrame = animation loop (requestAnimationFrame)
 import { useFrame } from '@react-three/fiber'
 import { BoxGeometry } from 'three'
@@ -33,7 +33,7 @@ export default function Cube() {
       
 
       {/* Material jo light ke sath react kare */}
-      <meshStandardMaterial color="orange" />
+      <meshStandardMaterial color="red" />
 
     </mesh>
   )
