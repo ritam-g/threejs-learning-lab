@@ -1,0 +1,11 @@
+/* Page ka default margin hata do */
+body {
+  margin: 0;
+  background: #000;
+}
+
+/* Canvas ko full screen banana */
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
